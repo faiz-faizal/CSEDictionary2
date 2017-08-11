@@ -46,7 +46,25 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
 		onCreate(database);
 		
 	}
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// tak penting,,method CRUD create(insert), read , update, delete
+
+	//CREATE
 	public long insertData(WordDefinition wordDefinition) {
 		SQLiteDatabase database=this.getWritableDatabase();
 		ContentValues values=new ContentValues();
@@ -58,6 +76,7 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
 		
 	}
 
+	//UPDATE
 	public long updateData(WordDefinition wordDefinition) {
 		SQLiteDatabase database=this.getWritableDatabase();
 		ContentValues values=new ContentValues();
@@ -68,14 +87,16 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
 		return database.update(DICTIONARY_DATABASE, values, WORD_COLUMN+" =?", new String[]{wordDefinition.word});	
 		
 	}
-	
+
+	//DELETE
 	public void deleteData(WordDefinition wordDefinition) {
 		SQLiteDatabase database=this.getWritableDatabase();
 		String queryString="DELETE FROM "+DICTIONARY_DATABASE+" WHERE "+WORD_COLUMN+" = '"+wordDefinition.word+"'";
 		
 		database.execSQL(queryString);
 	}
-	
+
+	//READ(GET)
 	public ArrayList<WordDefinition> getAllWords() {
 		ArrayList<WordDefinition> arrayList=new ArrayList<WordDefinition>();
 		SQLiteDatabase database=this.getReadableDatabase();
